@@ -47,19 +47,19 @@ export default function GallerySection({ galleries }: GallerySectionProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6, delay: index * 0.1 }}
-          className="mb-32 last:mb-0"
+          className="mb-32 last:mb-0 w-full"
         >
-          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
             {/* Gallery Header */}
             <div className="mb-8">
-              <h2 className="text-3xl lg:text-5xl font-light tracking-tight text-black mb-4" style={{ fontFamily: 'var(--font-display)' }}>
+              <h2 className="text-3xl lg:text-5xl font-light tracking-tight text-[#111] mb-4" style={{ fontFamily: 'var(--font-display)' }}>
                 {gallery.title}
               </h2>
               {gallery.year && (
-                <p className="text-sm text-black/60 mb-2">{gallery.year}</p>
+                <p className="text-sm text-[#111]/60 mb-2">{gallery.year}</p>
               )}
               {gallery.description && (
-                <p className="text-base text-black/80 max-w-2xl">{gallery.description}</p>
+                <p className="text-base text-[#111]/80 max-w-2xl">{gallery.description}</p>
               )}
             </div>
 
@@ -101,7 +101,7 @@ export default function GallerySection({ galleries }: GallerySectionProps) {
                       />
                     </div>
                     {image.caption && (
-                      <p className="mt-4 text-sm text-black/60">{image.caption}</p>
+                      <p className="mt-4 text-sm text-[#111]/60">{image.caption}</p>
                     )}
                   </motion.div>
                 ))}

@@ -32,7 +32,7 @@ export default function RootLayout({
         className={`${inter.variable} ${dmSans.variable} antialiased`}
       >
         <Header />
-        <main className="pt-28 lg:pt-32 min-h-screen">
+        <main className="min-h-screen">
           {children}
         </main>
         <Footer />
