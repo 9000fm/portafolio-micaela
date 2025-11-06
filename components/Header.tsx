@@ -6,9 +6,10 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
+  { href: '/proyectos', label: 'proyectos' }, // first
+  { href: '/', label: 'inicio' },
   { href: '/biografia', label: 'biografía' },
   { href: '/archivo', label: 'archivo' },
-  { href: '/proyectos', label: 'proyectos' },
   { href: '/contacto', label: 'contacto' },
 ];
 
@@ -32,15 +33,15 @@ export default function Header() {
         {/* Desktop Navigation */}
         <ul className="hidden md:flex items-center gap-8 lg:gap-10">
           {navItems.map((item) => {
-            const isActive = pathname === item.href;
+            const isActive = pathname === item.href || (item.href === '/' && pathname === '/');
             return (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={`text-sm lg:text-base font-normal transition-colors duration-300 lowercase ${
+                  className={`text-sm lg:text-base font-normal transition-colors duration-200 lowercase ${
                     isActive 
-                      ? 'text-[#111]' 
-                      : 'text-[#111] hover:text-[#666]'
+                      ? 'text-(--color-gray-dark)' 
+                      : 'text-(--color-gray-medium) hover:text-(--color-gray-dark)'
                   }`}
                   style={{ letterSpacing: '0.1em' }}
                 >
@@ -93,10 +94,10 @@ export default function Header() {
                       <Link
                         href={item.href}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className={`text-base font-normal transition-colors duration-300 block py-2 lowercase ${
+                        className={`text-base font-normal transition-colors duration-200 block py-2 lowercase ${
                           isActive 
-                            ? 'text-[#111]' 
-                            : 'text-[#111] hover:text-[#666]'
+                            ? 'text-(--color-gray-dark)' 
+                            : 'text-(--color-gray-medium) hover:text-(--color-gray-dark)'
                         }`}
                         style={{ letterSpacing: '0.1em' }}
                       >

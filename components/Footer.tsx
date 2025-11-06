@@ -24,37 +24,23 @@ export default function Footer() {
     <>
       <footer className="bg-white py-16 lg:py-24 px-6 lg:px-8 mt-auto">
         <div className="max-w-[1200px] mx-auto">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 md:gap-4 mb-12">
-            <div className="flex flex-col gap-2">
-              <p className="text-sm text-[#111] font-normal">
-                © Micaela {currentYear}
-              </p>
-              <p className="text-xs text-[#111]/60 font-normal">
-                Fotografía y arte visual
-              </p>
-            </div>
-            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8">
-              <a
-                href="https://instagram.com/lunaentulipan"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-[#111] font-normal hover:text-[#666] transition-colors duration-300"
-              >
-                @lunaentulipan
-              </a>
-              <a
-                href="/contacto"
-                className="text-sm text-[#111] font-normal hover:text-[#666] transition-colors duration-300"
-              >
-                Contacto
-              </a>
-            </div>
+          <div className="flex flex-col items-center text-center gap-4 mb-8">
+            {/* Logo placeholder: using name as logo for now */}
+            <div className="text-xl tracking-wide" style={{ letterSpacing: '0.1em' }}>MICAELA</div>
+            <p className="text-sm text-[#111] font-normal">© Micaela Lucía {currentYear}</p>
+            <p className="text-xs text-[#111]/70 font-normal">Fotografía y arte visual</p>
+            <a
+              href="https://instagram.com/lunaentulipan"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-[#111] hover:text-[#666] transition-colors duration-200"
+            >
+              @lunaentulipan
+            </a>
           </div>
-          <div className="pt-8">
-            <p className="text-xs text-[#111]/40 font-normal text-center md:text-left">
-              Todos los derechos reservados
-            </p>
-          </div>
+          <p className="text-xs text-[#111]/40 font-normal text-center">
+            Todos los derechos reservados
+          </p>
         </div>
       </footer>
 
