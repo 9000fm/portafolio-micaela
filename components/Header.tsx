@@ -40,9 +40,10 @@ export default function Header() {
                   href={item.href}
                   className={`text-base lg:text-lg xl:text-xl font-normal transition-colors duration-300 ${
                     isActive 
-                      ? 'text-black' 
+                      ? 'text-gray-dark' 
                       : 'text-gray-medium hover:text-black'
                   }`}
+                  style={isActive ? { color: 'var(--gray-dark)' } : {}}
                 >
                   {item.label}
                 </Link>
@@ -95,9 +96,10 @@ export default function Header() {
                         onClick={() => setIsMobileMenuOpen(false)}
                         className={`text-lg font-normal transition-colors duration-300 block py-2 ${
                           isActive 
-                            ? 'text-black' 
+                            ? 'text-gray-dark' 
                             : 'text-gray-medium hover:text-black'
                         }`}
+                        style={isActive ? { color: 'var(--gray-dark)' } : {}}
                       >
                         {item.label}
                       </Link>
