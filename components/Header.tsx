@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
-  { href: '/', label: 'inicio' },
   { href: '/biografia', label: 'biografía' },
   { href: '/archivo', label: 'archivo' },
   { href: '/proyectos', label: 'proyectos' },
@@ -19,11 +18,11 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white">
-      <nav className="w-full max-w-[1920px] mx-auto px-8 lg:px-16 xl:px-24 py-8 lg:py-10 flex items-center justify-between">
+      <nav className="w-full max-w-[1200px] mx-auto px-6 lg:px-8 py-6 lg:py-8 flex items-center justify-between">
         {/* Site Name */}
         <Link href="/" className="flex items-center">
           <h1
-            className="text-3xl lg:text-4xl xl:text-5xl font-light tracking-tight text-black"
+            className="text-2xl lg:text-3xl xl:text-4xl font-light tracking-tight text-[#111]"
             style={{ fontFamily: 'var(--font-display)' }}
           >
             Micaela Lucía
@@ -31,19 +30,19 @@ export default function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex items-center gap-10 lg:gap-12 xl:gap-16">
+        <ul className="hidden md:flex items-center gap-8 lg:gap-10">
           {navItems.map((item) => {
-            const isActive = pathname === item.href || (item.href === '/' && pathname === '/');
+            const isActive = pathname === item.href;
             return (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={`text-base lg:text-lg xl:text-xl font-normal transition-colors duration-300 ${
+                  className={`text-sm lg:text-base font-normal transition-colors duration-300 lowercase ${
                     isActive 
-                      ? 'text-gray-dark' 
-                      : 'text-gray-medium hover:text-black'
+                      ? 'text-[#111]' 
+                      : 'text-[#111] hover:text-[#666]'
                   }`}
-                  style={isActive ? { color: 'var(--gray-dark)' } : {}}
+                  style={{ letterSpacing: '0.1em' }}
                 >
                   {item.label}
                 </Link>
@@ -94,12 +93,12 @@ export default function Header() {
                       <Link
                         href={item.href}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className={`text-lg font-normal transition-colors duration-300 block py-2 ${
+                        className={`text-base font-normal transition-colors duration-300 block py-2 lowercase ${
                           isActive 
-                            ? 'text-gray-dark' 
-                            : 'text-gray-medium hover:text-black'
+                            ? 'text-[#111]' 
+                            : 'text-[#111] hover:text-[#666]'
                         }`}
-                        style={isActive ? { color: 'var(--gray-dark)' } : {}}
+                        style={{ letterSpacing: '0.1em' }}
                       >
                         {item.label}
                       </Link>
