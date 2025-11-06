@@ -22,19 +22,39 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="bg-white py-8 px-6 lg:px-12 mt-auto">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-black font-normal">
-            © Micaela {currentYear}
-          </p>
-          <a
-            href="https://instagram.com/lunaentulipan"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-black font-normal hover:opacity-70 transition-opacity duration-300"
-          >
-            @lunaentulipan
-          </a>
+      <footer className="bg-white py-16 lg:py-24 px-6 lg:px-12 mt-auto">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 md:gap-4 mb-12">
+            <div className="flex flex-col gap-2">
+              <p className="text-sm text-black font-normal">
+                © Micaela {currentYear}
+              </p>
+              <p className="text-xs text-black/60 font-normal">
+                Fotografía y arte visual
+              </p>
+            </div>
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8">
+              <a
+                href="https://instagram.com/lunaentulipan"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-black font-normal hover:opacity-70 transition-opacity duration-300"
+              >
+                @lunaentulipan
+              </a>
+              <a
+                href="/contacto"
+                className="text-sm text-black font-normal hover:opacity-70 transition-opacity duration-300"
+              >
+                Contacto
+              </a>
+            </div>
+          </div>
+          <div className="pt-8 border-t border-black/5">
+            <p className="text-xs text-black/40 font-normal text-center md:text-left">
+              Todos los derechos reservados
+            </p>
+          </div>
         </div>
       </footer>
 
