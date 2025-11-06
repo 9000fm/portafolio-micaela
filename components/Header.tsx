@@ -19,19 +19,20 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white">
-      <nav className="w-full max-w-[1200px] mx-auto px-6 lg:px-8 py-6 lg:py-8 flex items-center justify-between">
-        {/* Site Name */}
-        <Link href="/" className="flex items-center">
-          <h1
-            className="text-2xl lg:text-3xl xl:text-4xl font-light tracking-tight text-[#111]"
-            style={{ fontFamily: 'var(--font-display)' }}
-          >
-            Micaela Lucía
-          </h1>
-        </Link>
+      <nav className="w-full px-4">
+        <div className="max-w-[1200px] mx-auto flex items-center justify-center gap-12 lg:gap-16 py-7 lg:py-9">
+          {/* Site Name */}
+          <Link href="/" className="flex items-center">
+            <h1
+              className="text-2xl lg:text-3xl xl:text-4xl font-semibold tracking-tight text-[#111]"
+              style={{ letterSpacing: '0.05em' }}
+            >
+              Micaela Lucía
+            </h1>
+          </Link>
 
-        {/* Desktop Navigation */}
-        <ul className="hidden md:flex items-center gap-8 lg:gap-10">
+          {/* Desktop Navigation */}
+          <ul className="hidden md:flex items-center gap-10 lg:gap-12">
           {navItems.map((item) => {
             const isActive = pathname === item.href || (item.href === '/' && pathname === '/');
             return (
@@ -50,7 +51,7 @@ export default function Header() {
               </li>
             );
           })}
-        </ul>
+          </ul>
 
         {/* Mobile Menu Button */}
         <button
@@ -74,6 +75,7 @@ export default function Header() {
             }`}
           />
         </button>
+        </div>
       </nav>
 
         {/* Mobile Menu */}

@@ -9,10 +9,14 @@ export default function Footer() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 400);
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? scrollTop / docHeight : 0;
+      setShowScrollTop(progress > 0.85);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -48,26 +52,20 @@ export default function Footer() {
       <AnimatePresence>
         {showScrollTop && (
           <motion.button
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             onClick={scrollToTop}
-            className="fixed bottom-8 right-8 z-40 w-10 h-10 flex items-center justify-center bg-white hover:opacity-80 transition-opacity duration-300 focus:outline-none border-0"
+            className="fixed z-40 w-10 h-10 flex items-center justify-center bg-white transition-all duration-200 focus:outline-none"
             aria-label="Scroll to top"
+            style={{ bottom: 40, right: 40, border: '10px solid #000' }}
+            whileHover={{ y: -3, opacity: 1 }}
           >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="text-black"
-            >
-              <path d="M18 15l-6-6-6 6" />
-            </svg>
+            <div className="relative w-4 h-4 opacity-70">
+              <span className="absolute left-1/2 top-0 -translate-x-1/2 block h-4 w-px bg-black" />
+              <span className="absolute left-1/2 top-0 -translate-x-1/2 rotate-45 block h-2 w-px bg-black origin-top" />
+              <span className="absolute left-1/2 top-0 -translate-x-1/2 -rotate-45 block h-2 w-px bg-black origin-top" />
+            </div>
           </motion.button>
         )}
       </AnimatePresence>

@@ -74,6 +74,7 @@ export default function GallerySection({ galleries }: GallerySectionProps) {
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 1200px"
                     priority={index === 0}
+                    loading={index === 0 ? 'eager' : 'lazy'}
                   />
                 </div>
               </div>
@@ -98,6 +99,7 @@ export default function GallerySection({ galleries }: GallerySectionProps) {
                         fill
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, 50vw"
+                        loading="lazy"
                       />
                     </div>
                     {image.caption && (
