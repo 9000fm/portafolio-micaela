@@ -1,66 +1,54 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
   { href: '/', label: 'inicio' },
-  { href: '/proyectos', label: 'proyectos' },
   { href: '/biografia', label: 'biografía' },
   { href: '/archivo', label: 'archivo' },
+  { href: '/proyectos', label: 'proyectos' },
   { href: '/contacto', label: 'contacto' },
 ];
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [titleVisible, setTitleVisible] = useState(false);
-
-  useEffect(() => {
-    // Fade in title after a brief delay
-    const timer = setTimeout(() => {
-      setTitleVisible(true);
-    }, 300);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
+  const pathname = usePathname();
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300"
-    >
-      <nav className="max-w-7xl mx-auto px-6 lg:px-12 py-6 flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white">
+      <nav className="w-full max-w-[1920px] mx-auto px-8 lg:px-16 xl:px-24 py-8 lg:py-10 flex items-center justify-between">
         {/* Site Name */}
         <Link href="/" className="flex items-center">
-          <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{ opacity: titleVisible ? 1 : 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl font-normal tracking-tight text-black"
+          <h1
+            className="text-3xl lg:text-4xl xl:text-5xl font-light tracking-tight text-black"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            Micaela Lucia
-          </motion.h1>
+            Micaela Lucía
+          </h1>
         </Link>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                className="text-sm font-normal hover:text-black transition-colors duration-300"
-                style={{ color: 'var(--gray-medium)' }}
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
+        <ul className="hidden md:flex items-center gap-10 lg:gap-12 xl:gap-16">
+          {navItems.map((item) => {
+            const isActive = pathname === item.href || (item.href === '/' && pathname === '/');
+            return (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className={`text-base lg:text-lg xl:text-xl font-normal transition-colors duration-300 ${
+                    isActive 
+                      ? 'text-black' 
+                      : 'text-gray-medium hover:text-black'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         {/* Mobile Menu Button */}
@@ -87,34 +75,40 @@ export default function Header() {
         </button>
       </nav>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-white"
-          >
-            <ul className="flex flex-col py-4 px-6 gap-4">
-              {navItems.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-sm font-normal hover:text-black transition-colors duration-300 block py-2"
-                    style={{ color: 'var(--gray-medium)' }}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.header>
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden bg-white w-full absolute top-full left-0"
+            >
+              <ul className="flex flex-col py-6 px-8 gap-4">
+                {navItems.map((item) => {
+                  const isActive = pathname === item.href || (item.href === '/' && pathname === '/');
+                  return (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className={`text-lg font-normal transition-colors duration-300 block py-2 ${
+                          isActive 
+                            ? 'text-black' 
+                            : 'text-gray-medium hover:text-black'
+                        }`}
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
+    </header>
   );
 }
 
