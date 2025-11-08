@@ -26,14 +26,13 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="bg-white mt-24">
+      <footer className="bg-white mt-32">
         {/* Container with same max-width and padding as header */}
         <div className="max-w-[1200px] mx-auto px-6 lg:px-8 py-16 lg:py-20">
           <div className="flex flex-col items-center text-center gap-4">
-            <div className="text-xl tracking-wide" style={{ letterSpacing: '0.1em' }}>
-              MICAELA LUCÍA
-            </div>
-            <p className="text-sm text-[#111] font-normal">Fotografía y arte visual</p>
+            <p className="text-sm text-[#111] font-normal uppercase tracking-[0.2em]">
+              Fotografía y arte visual
+            </p>
             <a
               href="https://instagram.com/lunaentulipan"
               target="_blank"
@@ -55,7 +54,7 @@ export default function Footer() {
               </svg>
             </a>
             <p className="text-xs text-[#111]/40 font-normal mt-4">
-              © {currentYear} Todos los derechos reservados
+              © {currentYear} Micaela Lucía · Todos los derechos reservados
             </p>
           </div>
 
