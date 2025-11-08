@@ -3,6 +3,7 @@ import { client, isSanityConfigured } from '@/lib/sanity.client';
 import { galleriesQuery } from '@/lib/sanity.queries';
 import GallerySection from '@/components/GallerySection';
 import Hero from '@/components/Hero';
+import ProjectImage from '@/components/ProjectImage';
 
 // Placeholder images - using Unsplash URLs for placeholder images
 const placeholderImages = [
@@ -38,7 +39,7 @@ export default async function Home() {
 
       {/* Content Sections */}
       {!isSanityConfigured() ? (
-        <section className="w-full bg-white py-16">
+        <section className="w-full bg-white py-20 lg:py-24">
           <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
             <div className="bg-gray-50 p-6 rounded">
               <h2 className="text-lg font-medium mb-2 text-[#111]">Sanity CMS Not Configured</h2>
@@ -59,7 +60,7 @@ NEXT_PUBLIC_SANITY_API_VERSION=2024-01-01`}
       ) : galleries.length > 0 ? (
         <GallerySection galleries={galleries} />
       ) : (
-        <section className="w-full bg-white py-16">
+        <section className="w-full bg-white py-20 lg:py-24">
           <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
             <p className="text-[#111]/60">No galleries found. Add content in Sanity Studio at /studio</p>
           </div>
@@ -70,16 +71,14 @@ NEXT_PUBLIC_SANITY_API_VERSION=2024-01-01`}
       <section className="w-full bg-white">
         <div className="space-y-0">
           {placeholderImages.slice(1).map((imageUrl, index) => (
-            <div key={index} className="relative w-full h-screen">
-              <Image
-                src={imageUrl}
-                alt={`Placeholder ${index + 2}`}
-                fill
-                className="object-cover"
-                loading="lazy"
-                sizes="100vw"
-              />
-            </div>
+            <ProjectImage
+              key={index}
+              imageUrl={imageUrl}
+              title={`Project ${index + 2}`}
+              alt={`Placeholder ${index + 2}`}
+              priority={false}
+              aspectRatio="h-screen"
+            />
           ))}
         </div>
       </section>

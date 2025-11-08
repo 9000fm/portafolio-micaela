@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { urlForImage } from '@/lib/sanity.image';
+import ProjectImage from './ProjectImage';
 
 // Helper to get image URL
 function getImageUrl(imageUrl: string | undefined): string {
@@ -47,36 +48,30 @@ export default function GallerySection({ galleries }: GallerySectionProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6, delay: index * 0.1 }}
-          className="mb-32 last:mb-0 w-full"
+          className="w-full"
         >
-          <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
-            {/* Gallery Header */}
-            <div className="mb-8">
-              <h2 className="text-3xl lg:text-5xl font-light tracking-tight text-[#111] mb-4" style={{ fontFamily: 'var(--font-display)' }}>
-                {gallery.title}
-              </h2>
-              {gallery.year && (
-                <p className="text-sm text-[#111]/60 mb-2">{gallery.year}</p>
-              )}
-              {gallery.description && (
-                <p className="text-base text-[#111]/80 max-w-2xl">{gallery.description}</p>
-              )}
-            </div>
+          {/* Cover Image with integrated title - no spacing between projects */}
+          {gallery.coverImageUrl && (
+            <ProjectImage
+              imageUrl={gallery.coverImageUrl}
+              title={gallery.title}
+              alt={gallery.title}
+              priority={index === 0}
+              aspectRatio="aspect-[4/3] lg:aspect-[16/10]"
+            />
+          )}
 
-            {/* Cover Image */}
-            {gallery.coverImageUrl && (
-              <div className="mb-8 w-full">
-                <div className="relative w-full aspect-[4/3] lg:aspect-[16/10]">
-                  <Image
-                    src={getImageUrl(gallery.coverImageUrl)}
-                    alt={gallery.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 1200px"
-                    priority={index === 0}
-                    loading={index === 0 ? 'eager' : 'lazy'}
-                  />
-                </div>
+          {/* Content aligned to grid - consistent spacing */}
+          <div className="max-w-[1200px] mx-auto px-6 lg:px-8 py-20 lg:py-24">
+            {/* Gallery Metadata - shown below image */}
+            {(gallery.year || gallery.description) && (
+              <div className="mb-12">
+                {gallery.year && (
+                  <p className="text-sm text-[#111]/60 mb-2">{gallery.year}</p>
+                )}
+                {gallery.description && (
+                  <p className="text-base text-[#111]/80 max-w-2xl">{gallery.description}</p>
+                )}
               </div>
             )}
 
