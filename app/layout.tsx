@@ -34,7 +34,7 @@ export default function RootLayout({
         className={`${inter.variable} ${lora.variable} antialiased`}
       >
         <Header />
-        <main className="min-h-screen pt-32 md:pt-40">
+        <main className="min-h-screen">
           {children}
         </main>
         <ScrollToTop />

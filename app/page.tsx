@@ -39,9 +39,9 @@ export default async function Home() {
 
       {/* Content Sections */}
       {!isSanityConfigured() ? (
-        <section className="w-full bg-white py-20 lg:py-24">
-          <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
-            <div className="bg-gray-50 p-6 rounded">
+        <section className="page-section">
+          <div className="page-container">
+            <div className="rounded border border-dashed border-[#111]/10 bg-gray-50/80 p-6 md:p-8">
               <h2 className="text-lg font-medium mb-2 text-[#111]">Sanity CMS Not Configured</h2>
               <p className="text-sm text-[#111]/70 mb-4">
                 To connect Sanity CMS, create a <code className="bg-gray-200 px-2 py-1 rounded">.env.local</code> file with:

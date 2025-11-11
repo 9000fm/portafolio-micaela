@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const navItems = [
   { href: '/', label: 'inicio' },
   { href: '/proyectos', label: 'proyectos' },
-  { href: '/biografia', label: 'biografía' },
+  { href: '/bio', label: 'bio' },
   { href: '/archivo', label: 'archivo' },
   { href: '/contacto', label: 'contacto' },
 ];
@@ -44,7 +44,7 @@ export default function Header() {
   }, [pathname]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white">
+    <header className="sticky top-0 z-50 bg-white">
       <nav className="w-full">
         {/* Full-width navbar, content centered in 1200px container */}
         <div className="w-full flex justify-center">
