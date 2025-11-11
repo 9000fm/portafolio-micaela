@@ -60,7 +60,7 @@ export default function Header() {
                 <Link href="/" className="z-10">
                   <h1
                     className="text-2xl lg:text-3xl xl:text-4xl font-semibold tracking-tight text-[#111]"
-                    style={{ letterSpacing: '0.05em' }}
+                    style={{ letterSpacing: '0.15em' }}
                   >
                     Micaela Lucía
                   </h1>
@@ -69,24 +69,20 @@ export default function Header() {
 
               {/* Desktop Navigation - Right side with equal spacing */}
               <ul className="hidden md:flex items-center gap-10 lg:gap-12 shrink-0 pr-6 md:pr-10 lg:pr-14">
-            {navItems.map((item) => {
-              const isActive = pathname === item.href;
-              return (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className={`text-sm lg:text-base font-normal transition-colors duration-300 lowercase ${
-                      isActive 
-                        ? 'text-[#4a4a4a]' 
-                        : 'text-[#d0d0d0] hover:text-[#9a9a9a]'
-                    }`}
-                    style={{ letterSpacing: '0.1em' }}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              );
-            })}
+              {navItems.map((item) => {
+                const isActive = pathname === item.href;
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className={`desktop-nav-link ${isActive ? 'desktop-nav-link--active' : ''} text-sm lg:text-sm font-normal lowercase transition-colors duration-300`}
+                      style={{ letterSpacing: '0.1em' }}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
 
             {/* Mobile Menu Button */}
@@ -147,8 +143,8 @@ export default function Header() {
                           onClick={() => setIsMobileMenuOpen(false)}
                           className={`text-base font-normal transition-colors duration-300 block py-3 lowercase ${
                             isActive 
-                              ? 'text-[#4a4a4a]' 
-                              : 'text-[#d0d0d0] hover:text-[#9a9a9a]'
+                              ? 'text-[#1a1a1a]' 
+                              : 'text-[#d0d0d0]'
                           }`}
                           style={{ letterSpacing: '0.1em' }}
                         >

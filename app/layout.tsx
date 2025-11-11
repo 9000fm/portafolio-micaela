@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, DM_Sans } from "next/font/google";
+import { Inter, Lora } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -10,9 +11,10 @@ const inter = Inter({
   display: "swap",
 });
 
-const dmSans = DM_Sans({
+const lora = Lora({
   variable: "--font-dm-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -29,12 +31,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${dmSans.variable} antialiased`}
+        className={`${inter.variable} ${lora.variable} antialiased`}
       >
         <Header />
-        <main className="min-h-screen">
+        <main className="min-h-screen pt-32 md:pt-40">
           {children}
         </main>
+        <ScrollToTop />
         <Footer />
       </body>
     </html>

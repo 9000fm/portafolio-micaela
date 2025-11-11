@@ -41,14 +41,17 @@ export default function GallerySection({ galleries }: GallerySectionProps) {
 
   return (
     <div className="w-full">
-      {galleries.map((gallery, index) => (
+      {galleries.map((gallery, index) => {
+        const isLast = index === galleries.length - 1;
+
+        return (
         <motion.section
           key={gallery._id}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6, delay: index * 0.1 }}
-          className="w-full"
+          className={`w-full ${isLast ? 'pt-16 md:pt-24 pb-24 md:pb-32' : ''}`}
         >
           {/* Cover Image with integrated title - no spacing between projects */}
           {gallery.coverImageUrl && (
@@ -58,6 +61,7 @@ export default function GallerySection({ galleries }: GallerySectionProps) {
               alt={gallery.title}
               priority={index === 0}
               aspectRatio="aspect-[4/3] lg:aspect-[16/10]"
+              className={isLast ? 'mt-6 md:mt-10' : ''}
             />
           )}
 
@@ -77,7 +81,7 @@ export default function GallerySection({ galleries }: GallerySectionProps) {
 
             {/* Gallery Images */}
             {gallery.gallery && gallery.gallery.length > 0 && (
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
                 {gallery.gallery.map((image, imgIndex) => (
                   <motion.div
                     key={imgIndex}
@@ -106,7 +110,8 @@ export default function GallerySection({ galleries }: GallerySectionProps) {
             )}
           </div>
         </motion.section>
-      ))}
+      );
+      })}
     </div>
   );
 }

@@ -28,6 +28,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-bottom: 11px;
 }
 
 * {
@@ -80,6 +81,21 @@ button:focus,
 a:focus {
   outline: 1px solid var(--foreground);
   outline-offset: 2px;
+}
+
+.desktop-nav-link {
+  color: #c7c7c7;
+  transition: color 0.3s ease;
+}
+
+.desktop-nav-link--active {
+  color: #1a1a1a;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .desktop-nav-link:not(.desktop-nav-link--active):hover {
+    color: #1a1a1a;
+  }
 }
 
 /* Responsive typography */
