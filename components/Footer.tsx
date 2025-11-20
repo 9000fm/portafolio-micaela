@@ -1,16 +1,24 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export default function Footer() {
+  const pathname = usePathname();
+  const isStudioRoute = pathname?.startsWith('/studio');
   const currentYear = new Date().getFullYear();
+
+  if (isStudioRoute) {
+    return null;
+  }
+
   return (
-    <footer className="bg-white mt-40 pb-[11px]">
+    <footer className="bg-white pb-[11px]">
       {/* Container with same max-width and padding as header */}
       <div className="w-full flex justify-center">
         <div className="max-w-[1200px] w-full">
           <div
-            className="pt-20 pb-16 lg:pt-24 lg:pb-20"
+            className="pt-52 pb-24 lg:pt-64 lg:pb-32"
             style={{
               paddingLeft: 'clamp(1.5rem, 4vw, 3.5rem)',
               paddingRight: 'clamp(1.5rem, 4vw, 3.5rem)',
@@ -53,7 +61,7 @@ export default function Footer() {
                 </Link>
               </div>
 
-              <p className="text-xs text-[#111]/40 font-normal text-center">
+              <p className="text-xs text-[#111]/40 font-normal text-center mb-8 lg:mb-12">
                 © {currentYear} Micaela Lucía · Todos los derechos reservados
               </p>
             </div>

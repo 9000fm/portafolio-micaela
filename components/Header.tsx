@@ -6,16 +6,16 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
-  { href: '/', label: 'inicio' },
-  { href: '/proyectos', label: 'proyectos' },
-  { href: '/bio', label: 'bio' },
+  { href: '/', label: 'proyectos' },
   { href: '/archivo', label: 'archivo' },
+  { href: '/bio', label: 'bio' },
   { href: '/contacto', label: 'contacto' },
 ];
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const isStudioRoute = pathname?.startsWith('/studio');
   const prevPathnameRef = useRef(pathname);
 
   useEffect(() => {
@@ -42,6 +42,10 @@ export default function Header() {
     // Only depend on pathname to avoid unnecessary re-renders
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
+
+  if (isStudioRoute) {
+    return null;
+  }
 
   return (
     <header className="sticky top-0 z-50 bg-white">

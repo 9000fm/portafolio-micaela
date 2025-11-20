@@ -1,30 +1,28 @@
 import { groq } from 'next-sanity'
 
-export const galleriesQuery = groq`*[_type == "gallery"] | order(year desc) {
+export const projectsQuery = groq`*[_type == "project"] | order(year desc) {
   _id,
   title,
   slug,
   description,
   year,
-  coverImage,
-  "coverImageUrl": coverImage.asset->url,
-  gallery[] {
-    "imageUrl": image.asset->url,
+  featured,
+  images[] {
+    image,
     alt,
     caption
   }
 }`
 
-export const galleryBySlugQuery = groq`*[_type == "gallery" && slug.current == $slug][0] {
+export const projectBySlugQuery = groq`*[_type == "project" && slug.current == $slug][0] {
   _id,
   title,
   slug,
   description,
   year,
-  coverImage,
-  "coverImageUrl": coverImage.asset->url,
-  gallery[] {
-    "imageUrl": image.asset->url,
+  featured,
+  images[] {
+    image,
     alt,
     caption
   }
@@ -34,7 +32,6 @@ export const biographyQuery = groq`*[_type == "biography"][0] {
   _id,
   heading,
   portrait,
-  "portraitUrl": portrait.asset->url,
   content
 }`
 

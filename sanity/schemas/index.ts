@@ -1,6 +1,5 @@
-import photo from './photo'
-import gallery from './gallery'
-import biography from './biography'
+import project from './project'
+import bio from './bio'
 
-export const schemaTypes = [photo, gallery, biography]
+export const schemaTypes = [project, bio]
 

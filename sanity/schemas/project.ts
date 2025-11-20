@@ -1,8 +1,8 @@
 import { defineField, defineType } from 'sanity'
 
 export default defineType({
-  name: 'gallery',
-  title: 'Gallery (Proyectos)',
+  name: 'project',
+  title: 'Project',
   type: 'document',
   fields: [
     defineField({
@@ -25,32 +25,32 @@ export default defineType({
       name: 'description',
       title: 'Description',
       type: 'text',
-      description: 'Brief description of the project',
     }),
     defineField({
       name: 'year',
       title: 'Year',
-      type: 'string',
-      description: 'Year of the project',
-    }),
-    defineField({
-      name: 'coverImage',
-      title: 'Cover Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+      type: 'number',
+      description: 'Year of the project (used for sorting)',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'gallery',
-      title: 'Gallery Images',
+      name: 'featured',
+      title: 'Featured',
+      type: 'boolean',
+      initialValue: false,
+      description: 'Toggle to highlight this project on the site',
+    }),
+    defineField({
+      name: 'images',
+      title: 'Images',
       type: 'array',
+      description: 'First image acts as the cover',
       of: [
-        {
+        defineField({
+          name: 'imageObject',
           type: 'object',
           fields: [
-            {
+            defineField({
               name: 'image',
               title: 'Image',
               type: 'image',
@@ -58,43 +58,47 @@ export default defineType({
                 hotspot: true,
               },
               validation: (Rule) => Rule.required(),
-            },
-            {
+            }),
+            defineField({
               name: 'alt',
               title: 'Alt Text',
               type: 'string',
               description: 'Describe the image for accessibility',
               validation: (Rule) => Rule.required(),
-            },
-            {
+            }),
+            defineField({
               name: 'caption',
               title: 'Caption',
               type: 'string',
-            },
+            }),
           ],
           preview: {
             select: {
               title: 'alt',
               media: 'image',
+              subtitle: 'caption',
             },
           },
-        },
+        }),
       ],
+      validation: (Rule) => Rule.min(1),
     }),
   ],
   preview: {
     select: {
       title: 'title',
-      media: 'coverImage',
+      media: 'images.0.image',
       year: 'year',
+      featured: 'featured',
     },
-    prepare({ title, media, year }) {
+    prepare({ title, media, year, featured }) {
       return {
         title,
-        subtitle: year ? `Year: ${year}` : '',
+        subtitle: `${year ?? 'Year not set'}${featured ? ' • Featured' : ''}`,
         media,
       }
     },
   },
 })
+
 

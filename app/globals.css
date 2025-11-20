@@ -228,3 +228,39 @@ a:focus {
     font-size: 2rem;
   }
 }
+
+/* Bio content paragraph spacing */
+.bio-content-wrapper p,
+[class*="[&>p]:mb-"] p {
+  margin-bottom: 2rem !important;
+}
+
+.bio-content-wrapper p:last-child,
+[class*="[&>p]:mb-"] p:last-child {
+  margin-bottom: 0 !important;
+}
+
+.marquee-track {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  width: max-content;
+  will-change: transform;
+}
+
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

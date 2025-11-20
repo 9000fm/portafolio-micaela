@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { urlForImage } from '@/lib/sanity.image';
+import { getImageUrl } from '@/lib/image-utils';
 
 interface ProjectImageProps {
   imageUrl: string;
@@ -11,15 +11,6 @@ interface ProjectImageProps {
   priority?: boolean;
   className?: string;
   aspectRatio?: string;
-}
-
-// Helper to get image URL
-function getImageUrl(imageUrl: string): string {
-  if (!imageUrl) return '';
-  // If it's already a full URL, return it
-  if (imageUrl.startsWith('http')) return imageUrl;
-  // Otherwise use the image builder
-  return urlForImage(imageUrl).width(1920).url();
 }
 
 export default function ProjectImage({
@@ -39,7 +30,7 @@ export default function ProjectImage({
   return (
     <section className={containerClass}>
       <Image
-        src={getImageUrl(imageUrl)}
+        src={getImageUrl(imageUrl, 1920)}
         alt={alt || title}
         fill
         className="object-cover"

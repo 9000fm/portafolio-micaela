@@ -37,8 +37,10 @@ export default function RootLayout({
         <main className="min-h-screen">
           {children}
         </main>
-        <ScrollToTop />
+        <div style={{ paddingTop: "40px" }}>
         <Footer />
+        </div>
+        <ScrollToTop />
       </body>
     </html>
   );
