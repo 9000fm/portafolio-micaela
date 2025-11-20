@@ -43,13 +43,13 @@ export default async function HomePage() {
   if (!isSanityConfigured() || !client) {
     return (
       <section className="mx-auto flex min-h-[70vh] w-full max-w-[1200px] flex-col justify-center gap-5 px-[clamp(1.5rem,4vw,3.5rem)] text-left text-[#111]">
-        <p className="text-xs uppercase tracking-[0.18em] text-[#111]/60">
+        <p className="text-base uppercase tracking-[0.28em] text-[#111]/60">
           Configuración pendiente
         </p>
-        <h1 className="text-3xl md:text-4xl font-semibold leading-tight">
+        <h1 className="text-[2rem] font-semibold leading-tight">
           Conecta Sanity para ver los proyectos
         </h1>
-        <p className="max-w-2xl text-base text-[#111]/70 leading-relaxed">
+        <p className="max-w-2xl text-[15px] text-[#111]/70 leading-relaxed">
           Agrega las credenciales de Sanity en el entorno para activar los carruseles continuos del inicio.
         </p>
       </section>
@@ -68,13 +68,13 @@ export default async function HomePage() {
   if (galleries.length === 0) {
     return (
       <section className="mx-auto flex min-h-[70vh] w-full max-w-[1200px] flex-col justify-center gap-5 px-[clamp(1.5rem,4vw,3.5rem)] text-left text-[#111]">
-        <p className="text-xs uppercase tracking-[0.18em] text-[#111]/60">
+        <p className="text-base uppercase tracking-[0.28em] text-[#111]/60">
           Contenido en preparación
         </p>
-        <h1 className="text-3xl md:text-4xl font-semibold leading-tight">
+        <h1 className="text-[2rem] font-semibold leading-tight">
           Carga proyectos para este espacio
         </h1>
-        <p className="max-w-2xl text-base text-[#111]/70 leading-relaxed">
+        <p className="max-w-2xl text-[15px] text-[#111]/70 leading-relaxed">
           Desde el Studio, agrega proyectos con imágenes para que cada carrusel se muestre en portada.
         </p>
       </section>

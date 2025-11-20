@@ -47,10 +47,10 @@ export default async function ProjectPage({
   const galleryImages = project.images?.slice(1) || [];
 
   return (
-    <div className="w-full">
+    <div className="w-full bg-white">
       {/* Cover Image */}
       {coverImageUrl && (
-        <section className="relative w-full aspect-[4/3] md:aspect-[16/10] lg:aspect-[21/9] overflow-hidden">
+        <section className="relative w-full aspect-4/3 md:aspect-16/10 lg:aspect-21/9 overflow-hidden bg-[#111]">
           <Image
             src={coverImageUrl}
             alt={project.images[0]?.alt || project.title}
@@ -58,33 +58,37 @@ export default async function ProjectPage({
             className="object-cover"
             priority
             sizes="100vw"
+            quality={90}
           />
-          {/* Title overlay - center left */}
-          <div className="absolute inset-0 flex items-center">
-            <div 
-              className="max-w-[1200px] w-full mx-auto px-6 md:px-8 lg:px-12"
-              style={{
-                paddingLeft: 'clamp(2rem, 6vw, 4rem)',
-              }}
-            >
-              <div
-                className="inline-block px-4 md:px-6 py-2 md:py-3"
+          {/* Title overlay */}
+          <div className="absolute inset-0 flex items-center justify-center bg-black/10">
+            <div className="w-full flex justify-center">
+              <div 
+                className="max-w-[1200px] w-full flex items-center"
                 style={{
-                  backdropFilter: 'blur(8px)',
-                  WebkitBackdropFilter: 'blur(8px)',
-                  backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                  paddingLeft: 'clamp(1.5rem, 4vw, 3.5rem)',
+                  paddingRight: 'clamp(1.5rem, 4vw, 3.5rem)',
                 }}
               >
-                <h1 
-                  className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold uppercase tracking-wider"
+                <div
+                  className="inline-block px-6 md:px-8 py-3 md:py-4"
                   style={{
-                    fontFamily: 'var(--font-sans), "Helvetica Neue", Helvetica, Arial, sans-serif',
-                    letterSpacing: '0.15em',
-                    fontWeight: 700,
+                    backdropFilter: 'blur(12px)',
+                    WebkitBackdropFilter: 'blur(12px)',
+                    backgroundColor: 'rgba(255, 255, 255, 0.18)',
                   }}
                 >
-                  {project.title}
-                </h1>
+                  <h1 
+                    className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold uppercase"
+                    style={{
+                      fontFamily: 'var(--font-inter), "Helvetica Neue", Helvetica, Arial, sans-serif',
+                      letterSpacing: '0.18em',
+                      fontWeight: 600,
+                    }}
+                  >
+                    {project.title}
+                  </h1>
+                </div>
               </div>
             </div>
           </div>
@@ -92,48 +96,61 @@ export default async function ProjectPage({
       )}
 
       {/* Project Content */}
-      <section className="w-full bg-white py-12 md:py-16 lg:py-20">
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
-          {/* Project Metadata */}
-          {(project.year || project.description || project.featured) && (
-            <div className="mb-12 md:mb-16">
-              <div className="flex items-center gap-3 mb-4">
-                {project.year && (
-                  <p className="text-sm md:text-base text-[#111]/60">{project.year}</p>
-                )}
-                {project.featured && (
-                  <span className="text-xs px-2 py-0.5 rounded bg-[#111]/10 text-[#111]/60">
-                    Destacado
-                  </span>
+      <section className="w-full flex justify-center">
+        <div className="max-w-[1200px] w-full">
+          <div
+            className="py-16 md:py-24"
+            style={{
+              paddingLeft: 'clamp(1.5rem, 4vw, 3.5rem)',
+              paddingRight: 'clamp(1.5rem, 4vw, 3.5rem)',
+            }}
+          >
+            {/* Project Metadata */}
+            {(project.year || project.description || project.featured) && (
+              <div style={{ marginBottom: '64px' }}>
+                <div className="flex items-center gap-4 mb-6">
+                  {project.year && (
+                    <p className="text-base uppercase tracking-[0.28em] text-[#111]/45 font-medium">
+                      {project.year}
+                    </p>
+                  )}
+                  {project.featured && (
+                    <span 
+                      className="text-xs uppercase tracking-[0.24em] px-3 py-1 bg-[#111]/8 text-[#111]/50 font-medium"
+                      style={{ letterSpacing: '0.24em' }}
+                    >
+                      Destacado
+                    </span>
+                  )}
+                </div>
+                {project.description && (
+                  <p className="text-[15px] text-[#111]/75 max-w-2xl leading-relaxed font-normal">
+                    {project.description}
+                  </p>
                 )}
               </div>
-              {project.description && (
-                <p className="text-base md:text-lg text-[#111]/80 max-w-2xl leading-relaxed">
-                  {project.description}
-                </p>
-              )}
-            </div>
-          )}
+            )}
 
-          {/* Gallery Images */}
-          {galleryImages.length > 0 && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-              {galleryImages.map((imageItem: any, imgIndex: number) => {
-                const imageUrl = getImageUrl(imageItem.image);
-                if (!imageUrl) return null;
+            {/* Gallery Images */}
+            {galleryImages.length > 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
+                {galleryImages.map((imageItem: any, imgIndex: number) => {
+                  const imageUrl = getImageUrl(imageItem.image);
+                  if (!imageUrl) return null;
 
-                return (
-                  <ProjectImageWithAnimation
-                    key={imgIndex}
-                    imageUrl={imageUrl}
-                    alt={imageItem.alt || project.title}
-                    caption={imageItem.caption}
-                    index={imgIndex}
-                  />
-                );
-              })}
-            </div>
-          )}
+                  return (
+                    <ProjectImageWithAnimation
+                      key={imgIndex}
+                      imageUrl={imageUrl}
+                      alt={imageItem.alt || project.title}
+                      caption={imageItem.caption}
+                      index={imgIndex}
+                    />
+                  );
+                })}
+              </div>
+            )}
+          </div>
         </div>
       </section>
     </div>

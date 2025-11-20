@@ -11,10 +11,10 @@ export default async function ArchivoPage() {
   if (!isSanityConfigured() || !client) {
     return (
       <section className="mx-auto flex min-h-[60vh] w-full max-w-[1200px] flex-col justify-center gap-6 px-[clamp(1.5rem,4vw,3.5rem)] text-left text-[#111]">
-        <p className="text-sm uppercase tracking-[0.18em] text-[#111]/60">
+        <p className="text-base uppercase tracking-[0.28em] text-[#111]/60">
           Configuración requerida
         </p>
-        <h1 className="text-3xl md:text-4xl font-semibold leading-tight">
+        <h1 className="text-[2rem] font-semibold leading-tight">
           Sanity no está configurado
         </h1>
       </section>

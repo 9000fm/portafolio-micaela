@@ -21,10 +21,10 @@ export default async function BioPage() {
               paddingRight: 'clamp(1.5rem, 4vw, 3.5rem)',
             }}
           >
-            <p className="text-sm uppercase tracking-[0.18em] text-[#111]/60">
+            <p className="text-base uppercase tracking-[0.28em] text-[#111]/60">
               Página no encontrada
             </p>
-            <h1 className="text-3xl md:text-4xl font-semibold leading-tight">
+            <h1 className="text-[2rem] font-semibold leading-tight">
               Esta sección aún no tiene contenido
             </h1>
           </div>
@@ -47,13 +47,13 @@ export default async function BioPage() {
                 paddingRight: 'clamp(1.5rem, 4vw, 3.5rem)',
               }}
             >
-              <p className="text-sm uppercase tracking-[0.18em] text-[#111]/60">
+              <p className="text-base uppercase tracking-[0.28em] text-[#111]/60">
                 Página no encontrada
               </p>
-              <h1 className="text-3xl md:text-4xl font-semibold leading-tight">
+              <h1 className="text-[2rem] font-semibold leading-tight">
                 Esta sección aún no tiene contenido
               </h1>
-              <p className="max-w-2xl text-base text-[#111]/70 leading-relaxed">
+              <p className="max-w-2xl text-[15px] text-[#111]/70 leading-relaxed">
                 Estamos preparando nuevas secciones. Volvé al inicio para seguir explorando proyectos
                 o usá el menú para navegar por el resto del sitio.
               </p>
@@ -69,7 +69,7 @@ export default async function BioPage() {
       <section className="w-full flex justify-center mb-32 md:mb-40">
         <div className="max-w-[1200px] w-full">
           <div
-            className="py-12 md:py-20 text-[#111]"
+            className="py-24 md:py-40 text-[#111]"
             style={{
               paddingLeft: 'clamp(1.5rem, 4vw, 3.5rem)',
               paddingRight: 'clamp(1.5rem, 4vw, 3.5rem)',
@@ -78,10 +78,11 @@ export default async function BioPage() {
             {/* Heading - Full width */}
             {bio.heading && (
               <h1 
-                className="text-3xl md:text-4xl font-semibold leading-tight text-[#111] mb-8 md:mb-12"
+                className="text-3xl md:text-4xl font-semibold leading-tight text-[#111]"
                 style={{
                   fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace',
                   letterSpacing: '0.05em',
+                  marginBottom: '48px',
                 }}
               >
                 {bio.heading}
@@ -108,12 +109,12 @@ export default async function BioPage() {
               {/* Content - Right side on desktop */}
               {bio.content && (
                 <div 
-                  className="text-xs md:text-sm text-[#111]/90 bio-content-wrapper"
+                  className="text-[15px] text-[#111]/90 bio-content-wrapper"
                   style={{
                     fontFamily: 'var(--font-sans), "Helvetica Neue", Helvetica, Arial, sans-serif',
-                    fontWeight: 300,
+                    fontWeight: 400,
                     letterSpacing: '0.01em',
-                    lineHeight: '2',
+                    lineHeight: '1.75',
                   }}
                 >
                   <PortableText value={bio.content} />
@@ -136,10 +137,10 @@ export default async function BioPage() {
               paddingRight: 'clamp(1.5rem, 4vw, 3.5rem)',
             }}
           >
-            <p className="text-sm uppercase tracking-[0.18em] text-[#111]/60">
+            <p className="text-base uppercase tracking-[0.28em] text-[#111]/60">
               Error
             </p>
-            <h1 className="text-3xl md:text-4xl font-semibold leading-tight">
+            <h1 className="text-[2rem] font-semibold leading-tight">
               Error al cargar el contenido
             </h1>
           </div>

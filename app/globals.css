@@ -148,16 +148,10 @@ a:focus {
 }
 
 .page-eyebrow {
-  font-size: 0.75rem;
-  letter-spacing: 0.32em;
+  font-size: 1rem;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
   color: rgba(17, 17, 17, 0.6);
-}
-
-@media (min-width: 768px) {
-  .page-eyebrow {
-    font-size: 0.875rem;
-  }
 }
 
 .page-main {
@@ -176,23 +170,11 @@ a:focus {
   color: rgba(17, 17, 17, 0.75);
 }
 
-@media (min-width: 768px) {
-  .page-copy {
-    font-size: 1rem;
-  }
-}
-
 .page-list-heading {
-  font-size: 0.75rem;
-  letter-spacing: 0.26em;
+  font-size: 1rem;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
   color: rgba(17, 17, 17, 0.55);
-}
-
-@media (min-width: 768px) {
-  .page-list-heading {
-    font-size: 0.875rem;
-  }
 }
 
 .page-list {
@@ -202,12 +184,6 @@ a:focus {
   font-size: 0.9375rem;
   line-height: 1.75;
   color: rgba(17, 17, 17, 0.75);
-}
-
-@media (min-width: 768px) {
-  .page-list {
-    font-size: 1rem;
-  }
 }
 
 .text-balance {
@@ -262,5 +238,24 @@ a:focus {
   }
   100% {
     transform: translateX(0);
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  15% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  85% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
   }
 }

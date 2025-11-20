@@ -25,7 +25,7 @@ export default function Footer() {
             }}
           >
             <div className="flex flex-col items-center text-center gap-12">
-              <p className="text-sm text-[#111] font-medium uppercase tracking-[0.18em]">
+              <p className="text-base text-[#111] font-medium uppercase tracking-[0.28em]">
                 Fotografía y arte visual
               </p>
 
@@ -61,7 +61,7 @@ export default function Footer() {
                 </Link>
               </div>
 
-              <p className="text-xs text-[#111]/40 font-normal text-center mb-8 lg:mb-12">
+              <p className="text-[15px] text-[#111]/40 font-normal text-center mb-8 lg:mb-12">
                 © {currentYear} Micaela Lucía · Todos los derechos reservados
               </p>
             </div>
