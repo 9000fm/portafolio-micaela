@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { client, isSanityConfigured } from '@/lib/sanity.client';
 import { projectBySlugQuery, projectsQuery } from '@/lib/sanity.queries';
@@ -44,13 +45,16 @@ export default async function ProjectPage({
 
   const coverImage = project.images?.[0]?.image;
   const coverImageUrl = getImageUrl(coverImage);
-  const galleryImages = project.images?.slice(1) || [];
+  // Show all images except the first, then add the first image at the end
+  const galleryImages = project.images && project.images.length > 1
+    ? [...project.images.slice(1), project.images[0]]
+    : project.images || [];
 
   return (
     <div className="w-full bg-white">
       {/* Cover Image */}
       {coverImageUrl && (
-        <section className="relative w-full aspect-4/3 md:aspect-16/10 lg:aspect-21/9 overflow-hidden bg-[#111]">
+        <section className="relative w-full aspect-4/3 md:aspect-16/10 lg:aspect-10/3 overflow-hidden bg-[#111]">
           <Image
             src={coverImageUrl}
             alt={project.images[0]?.alt || project.title}
@@ -105,10 +109,36 @@ export default async function ProjectPage({
               paddingRight: 'clamp(1.5rem, 4vw, 3.5rem)',
             }}
           >
+            {/* Breadcrumb */}
+            <div style={{ marginTop: '24px', marginBottom: '48px' }}>
+              <Link 
+                href="/archivo"
+                className="inline-flex items-center gap-2 text-base uppercase tracking-[0.28em] text-[#111]/45 font-medium transition-colors duration-300 hover:text-[#111]/75"
+              >
+                <svg 
+                  width="16" 
+                  height="16" 
+                  viewBox="0 0 16 16" 
+                  fill="none" 
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="transition-transform duration-300 group-hover:-translate-x-1"
+                >
+                  <path 
+                    d="M10 12L6 8L10 4" 
+                    stroke="currentColor" 
+                    strokeWidth="1.5" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span>Archivo</span>
+              </Link>
+            </div>
+
             {/* Project Metadata */}
             {(project.year || project.description || project.featured) && (
-              <div style={{ marginBottom: '64px' }}>
-                <div className="flex items-center gap-4 mb-6">
+              <div style={{ marginBottom: '72px' }}>
+                <div className="flex items-center gap-4" style={{ marginBottom: '28px' }}>
                   {project.year && (
                     <p className="text-base uppercase tracking-[0.28em] text-[#111]/45 font-medium">
                       {project.year}
@@ -124,7 +154,10 @@ export default async function ProjectPage({
                   )}
                 </div>
                 {project.description && (
-                  <p className="text-[15px] text-[#111]/75 max-w-2xl leading-relaxed font-normal">
+                  <p 
+                    className="text-base md:text-lg text-[#111]/80 max-w-3xl font-normal"
+                    style={{ lineHeight: '1.7' }}
+                  >
                     {project.description}
                   </p>
                 )}

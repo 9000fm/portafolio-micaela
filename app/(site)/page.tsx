@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { client, isSanityConfigured } from '@/lib/sanity.client';
 import { projectsQuery } from '@/lib/sanity.queries';
 import { getImageUrl } from '@/lib/image-utils';
@@ -16,6 +17,9 @@ type ProjectImage = {
 type Project = {
   _id: string;
   title: string;
+  slug: {
+    current: string;
+  };
   images?: ProjectImage[];
 };
 
@@ -100,27 +104,29 @@ function Carousel({ project, variant }: { project: Project; variant: ScrollVaria
 
   const doubledFrames = [...frames, ...frames];
   const animationName = variant.direction === 'left' ? 'marquee-left' : 'marquee-right';
+  const projectSlug = project.slug?.current || '';
 
   return (
-    <section className="relative w-full overflow-hidden">
-      <div
-        className="absolute top-1/2 -translate-y-1/2 pointer-events-none z-10"
-        style={{ left: 'clamp(1rem, 5vw, 4rem)' }}
-      >
+    <Link href={`/proyectos/${projectSlug}`} className="block">
+      <section className="relative w-full overflow-hidden cursor-pointer group">
         <div
-          className="uppercase text-xl sm:text-2xl lg:text-[2.8rem] font-semibold tracking-[0.3em] text-white"
-          style={{
-            padding: '1.1rem 1.8rem',
-            backgroundColor: 'rgba(180, 180, 180, 0.15)',
-            backdropFilter: 'blur(18px)',
-            WebkitBackdropFilter: 'blur(18px)',
-            letterSpacing: '0.2em',
-            fontFamily: 'var(--font-inter), "Helvetica Neue", Helvetica, Arial, sans-serif',
-          }}
+          className="absolute top-1/2 -translate-y-1/2 z-10 transition-transform duration-300 group-hover:scale-105"
+          style={{ left: 'clamp(1rem, 5vw, 4rem)' }}
         >
-          {project.title}
+          <div
+            className="uppercase text-xl sm:text-2xl lg:text-[2.8rem] font-semibold tracking-[0.3em] text-white pointer-events-auto"
+            style={{
+              padding: '1.1rem 1.8rem',
+              backgroundColor: 'rgba(180, 180, 180, 0.15)',
+              backdropFilter: 'blur(18px)',
+              WebkitBackdropFilter: 'blur(18px)',
+              letterSpacing: '0.2em',
+              fontFamily: 'var(--font-inter), "Helvetica Neue", Helvetica, Arial, sans-serif',
+            }}
+          >
+            {project.title}
+          </div>
         </div>
-      </div>
 
       <div
         className="w-full overflow-hidden"
@@ -165,7 +171,8 @@ function Carousel({ project, variant }: { project: Project; variant: ScrollVaria
           })}
         </div>
       </div>
-    </section>
+      </section>
+    </Link>
   );
 }
 
