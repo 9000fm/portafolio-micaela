@@ -18,6 +18,7 @@ export default defineType({
       options: {
         hotspot: true,
       },
+      fields: [],
     }),
     defineField({
       name: 'content',

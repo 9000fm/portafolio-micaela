@@ -37,7 +37,7 @@ export default function ScrollToTop() {
       aria-label="Volver al inicio"
       onClick={handleScrollToTop}
       className={[
-        'fixed z-50 group flex h-12 w-12 items-center justify-center',
+        'fixed z-30 group flex h-12 w-12 items-center justify-center',
         'rounded-full border border-[#111]/20 bg-white/70 shadow-sm backdrop-blur',
         'transition-all duration-300 ease-out hover:-translate-y-1',
         'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111]/60',

@@ -1,4 +1,15 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Micaela Lucía - Portfolio
+
+A photography portfolio website for Micaela Lucía, built with Next.js and Sanity CMS.
+
+This is a straightforward portfolio project - nothing fancy, just a clean way to showcase photography work. Built while learning web development.
+
+## Tech Stack
+
+- **Next.js 15** - React framework
+- **Sanity CMS** - Content management
+- **Tailwind CSS** - Styling
+- **TypeScript** - Type safety
 
 ## Getting Started
 

@@ -77,9 +77,10 @@ export default async function ProjectPage({
                 <div
                   className="inline-block px-6 md:px-8 py-3 md:py-4"
                   style={{
-                    backdropFilter: 'blur(12px)',
-                    WebkitBackdropFilter: 'blur(12px)',
-                    backgroundColor: 'rgba(255, 255, 255, 0.18)',
+                    padding: '0.7rem 0.4rem',
+                    backdropFilter: 'blur(2px)',
+                    WebkitBackdropFilter: 'blur(2px)',
+                    backgroundColor: 'rgba(255, 255, 255, 0.3)',
                   }}
                 >
                   <h1 

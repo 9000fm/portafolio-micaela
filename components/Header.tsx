@@ -72,7 +72,12 @@ export default function Header() {
               </div>
 
               {/* Desktop Navigation - Right side with equal spacing */}
-              <ul className="hidden md:flex items-center gap-10 lg:gap-12 shrink-0 pr-6 md:pr-10 lg:pr-14">
+              <ul 
+                className="hidden md:flex items-center gap-10 lg:gap-12 shrink-0"
+                style={{ 
+                  marginRight: 'clamp(1.5rem, 4vw, 3.5rem)'
+                }}
+              >
               {navItems.map((item) => {
                 const isActive = pathname === item.href;
                 return (

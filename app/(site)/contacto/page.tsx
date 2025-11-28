@@ -18,8 +18,8 @@ export default function ContactPage() {
         <div
           className="py-24 md:py-40"
           style={{
-            paddingLeft: 'clamp(1.5rem, 4vw, 3.5rem)',
-            paddingRight: 'clamp(1.5rem, 4vw, 3.5rem)',
+            paddingLeft: 'clamp(1.5rem, 5vw, 4rem)',
+            paddingRight: 'clamp(1.5rem, 5vw, 4rem)',
           }}
         >
           {/* Title */}

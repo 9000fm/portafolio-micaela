@@ -57,6 +57,7 @@ export default defineType({
               options: {
                 hotspot: true,
               },
+              fields: [],
               validation: (Rule) => Rule.required(),
             }),
             defineField({
@@ -66,17 +67,11 @@ export default defineType({
               description: 'Describe the image for accessibility',
               validation: (Rule) => Rule.required(),
             }),
-            defineField({
-              name: 'caption',
-              title: 'Caption',
-              type: 'string',
-            }),
           ],
           preview: {
             select: {
               title: 'alt',
               media: 'image',
-              subtitle: 'caption',
             },
           },
         }),

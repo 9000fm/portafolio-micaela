@@ -21,6 +21,7 @@ type Project = {
     current: string;
   };
   images?: ProjectImage[];
+  featured?: boolean;
 };
 
 type ScrollVariant = {
@@ -67,7 +68,7 @@ export default async function HomePage() {
     console.error('Error fetching projects:', error);
   }
 
-  const galleries = projects.filter((project) => project.images && project.images.length);
+  const galleries = projects.filter((project) => project.featured && project.images && project.images.length);
 
   if (galleries.length === 0) {
     return (
@@ -110,16 +111,16 @@ function Carousel({ project, variant }: { project: Project; variant: ScrollVaria
     <Link href={`/proyectos/${projectSlug}`} className="block">
       <section className="relative w-full overflow-hidden cursor-pointer group">
         <div
-          className="absolute top-1/2 -translate-y-1/2 z-10 transition-transform duration-300 group-hover:scale-105"
+          className="absolute top-1/2 -translate-y-1/2 z-10"
           style={{ left: 'clamp(1rem, 5vw, 4rem)' }}
         >
           <div
-            className="uppercase text-xl sm:text-2xl lg:text-[2.8rem] font-semibold tracking-[0.3em] text-white pointer-events-auto"
+            className="uppercase text-xl sm:text-2xl lg:text-[2.8rem] font-semibold tracking-[0.3em] text-white pointer-events-auto px-6 md:px-8 py-3 md:py-4"
             style={{
-              padding: '1.1rem 1.8rem',
-              backgroundColor: 'rgba(180, 180, 180, 0.15)',
-              backdropFilter: 'blur(18px)',
-              WebkitBackdropFilter: 'blur(18px)',
+              padding: '0.7rem 0.4rem',
+              backgroundColor: 'rgba(255, 255, 255, 0.3)',
+              backdropFilter: 'blur(2px)',
+              WebkitBackdropFilter: 'blur(2px)',
               letterSpacing: '0.2em',
               fontFamily: 'var(--font-inter), "Helvetica Neue", Helvetica, Arial, sans-serif',
             }}
